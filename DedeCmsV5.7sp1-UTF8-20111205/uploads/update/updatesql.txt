@@ -1,0 +1,85 @@
+﻿alter table `#@__addoninfos` CHANGE `infotype`  `infotype` char(20)  NOT NULL    default '0'  COMMENT ''  AFTER `nativeplace`;
+alter table `#@__addonshop` ADD `vocation` char(20)  NOT NULL    default '0'  COMMENT ''  AFTER `redirecturl`;
+alter table `#@__addonshop` ADD `infotype` char(20)  NOT NULL    default '0'  COMMENT '' ;
+alter table `#@__addonshop` ADD `uptime` int(11)  NOT NULL    default '0'  COMMENT '' ;
+alter table `#@__archives` ADD `voteid` mediumint(8)  NOT NULL    COMMENT ''  AFTER `badpost`;
+alter table `#@__homepageset` ADD `showmod` tinyint(2)  NOT NULL    default '1'  COMMENT ''  AFTER `position`;
+alter table `#@__member_stow` CHANGE `type`  `type` varchar(10)    COMMENT ''  AFTER `addtime`;
+
+CREATE TABLE `#@__purview` (
+  `mid` mediumint(8) default '0',
+  `typeid` smallint(5) default '0',
+  `rank` smallint(6) default NULL,
+  `pkey` varchar(30) character set latin1 NOT NULL,
+  `pvalue` text NOT NULL,
+  KEY `pkey` USING BTREE (`pkey`)
+)ENGINE=MyISAM;
+
+CREATE TABLE `#@__sphinx` (
+  `countid` int(11) unsigned NOT NULL,
+  `maxaid` int(11) unsigned NOT NULL,
+  PRIMARY KEY  (`countid`)
+)ENGINE=MyISAM;
+
+alter table `#@__sys_enum` CHANGE `evalue`  `evalue` char(20)  NOT NULL    default '0'  COMMENT ''  AFTER `ename`;
+alter table `#@__vote` ADD `isallow` tinyint(6)  NOT NULL    default '0'  COMMENT ''  AFTER `ismore`;
+alter table `#@__vote` ADD `view` tinyint(6)  NOT NULL    default '0'  COMMENT '' ;
+alter table `#@__vote` ADD `spec` int(20) unsigned  NOT NULL    default '0'  COMMENT '' ;
+alter table `#@__vote` ADD `isenable` tinyint(6)  NOT NULL    default '0'  COMMENT '' ;
+
+CREATE TABLE `#@__vote_member` (
+  `id` mediumint(8) unsigned NOT NULL auto_increment,
+  `voteid` int(10) unsigned NOT NULL default '0',
+  `userid` varchar(50) NOT NULL default '',
+  `uptime` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+)ENGINE=MyISAM;
+
+CREATE TABLE `#@__myadtype` ( 
+	`id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT, 
+	`typename` varchar(50) NOT NULL DEFAULT '', 
+	PRIMARY KEY (`id`) 
+) ENGINE=MyISAM;
+
+ALTER TABLE `#@__myad`
+ADD COLUMN `clsid`  smallint(5) UNSIGNED NOT NULL DEFAULT 0 AFTER `aid`;
+
+alter table `#@__member` ADD `checkmail` smallint(6)  NOT NULL    default '-1'  COMMENT ''  AFTER `loginip`;
+
+INSERT INTO `#@__sysconfig` VALUES('752','cfg_mysql_type','数据库类型（支持mysql和mysqli）','2','string','mysqli'),
+('753','cfg_sphinx_article','是否启用文章全文检索功能（需配置sphinx服务器）','7','bool','N'),
+('754','cfg_sphinx_host','Sphinx服务器主机地址','7','string','localhost'),
+('756','cfg_sphinx_port','Sphinx服务器端口号','7','number','9312'),
+(14, 'cfg_domain_cookie', '跨域共享cookie的域名(例如: .dedecms.com)', 2, 'string', ''),
+('757','cfg_memcache_enable','是否启用memcache缓存，如果为否(N)，默认使用文件缓存',6,'bool','N'),
+('758','cfg_memcache_mc_defa','默认memcache缓存服务器地址',6,'string','memcache://127.0.0.1:11211/default127'),
+('759','cfg_memcache_mc_oth','附加memcache缓存服务器地址',6,'string','');
+
+UPDATE `#@__sysconfig` SET  `info` =  'Html编辑器（ckeditor,需要fck的用户可以去官网下载）', `value` =  'ckeditor' WHERE  `varname` =  'cfg_html_editor';
+
+REPLACE INTO `#@__sysconfig` VALUES ('759', 'cfg_cross_sectypeid', '支持交叉栏目显示副栏目内容', '7', 'bool', 'N');
+REPLACE INTO `#@__sysconfig` VALUES ('760', 'cfg_digg_update', '顶踩缓存异步更新间隔（0为不缓存）', '6', 'number', '0');
+REPLACE INTO `#@__sysconfig` VALUES ('761', 'cfg_feedback_guest', '是否允许匿名评论', '5', 'bool', 'N');
+REPLACE INTO `#@__sysconfig` VALUES ('762', 'cfg_ask_guestview', '问答是否允许游客访问', '8', 'bool', 'Y');
+REPLACE INTO `#@__sysconfig` VALUES ('763', 'cfg_ask_guestanswer', '问答是否允许匿名回复问题', '8', 'bool', 'Y');
+
+INSERT INTO `#@__myad` VALUES('1','0','0','indexTopBanner1','首页顶部导航大图-500*60','0','1297933028','1300525028','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=fronttopbanner&charset=gbk"></script>',''),
+('2','0','0','indexTopBanner2','首页顶部导航小图-200*60','0','1297933605','1300525605','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=fronttopbanner2&charset=gbk"></script>',''),
+('3','0','0','innerTopBanner1','(频道/列表)顶部导航大图-500*60','0','1297934052','1300526052','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innertopbanner1&charset=gbk"></script>',''),
+('4','0','0','innerTopBanner2','(频道/列表)顶部导航小图-200*60','0','1297934104','1300526104','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innertopbanner2&charset=gbk"></script>',''),
+('5','0','0','indexLeftBanner','首页左侧大图广告-712*75','0','1297934791','1300526791','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=indexleftbanner&charset=gbk"></script>',''),
+('6','0','0','indexRightLitpic1','首页右侧小块图1-240*65','0','1297936106','1300528106','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=indexrtlitpic1&charset=gbk"></script>',''),
+('7','0','0','indexRightLitpic2','首页右侧小块图2-240*65','0','1297936768','1300528768','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=indexrtlitpic2&charset=gbk"></script>',''),
+('8','0','0','indexfooterAD','首页底部图片广告-726*91','0','1297937814','1300529814','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=indexfooterad&charset=gbk"></script>',''),
+('9','0','0','innerfooterAD','(频道/列表)底部图片广告-726*91','0','1297991183','1300583183','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad&charset=gbk"></script>',''),
+('10','0','0','innerfooterAD2','内容底部图片广告-726*91','0','1297991709','1300583709','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad2&charset=gbk"></script>',''),
+('11','0','0','listRtPicAD','(频道/列表)右侧图片广告-240*200','0','1297992254','1300584254','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=listrtpicad&charset=gbk"></script>',''),
+('12','0','0','contentRtPicAD','内容右侧图片广告-240*200','0','1297995082','1300587082','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad&charset=gbk"></script>',''),
+('13','0','0','listRtPicAD2','(频道/列表)右侧图片广告2-240*200','0','1297996543','1300588543','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=listrtpicad2&charset=gbk"></script>',''),
+('14','0','0','contentRtPicAD2','内容右侧图片广告2-240*200','0','1297997106','1300589106','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad2&charset=gbk"></script>',''),
+('15','0','0','contentMidPicAD','内容页内容中广告-300*250','0','1297997971','1300589971','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentmidpicad&charset=gbk"></script>',''),
+('16','0','0','searchPicAD','搜索页右侧广告-300*268','0','1297999720','1300591720','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=searchpicad&charset=gbk"></script>',''),
+('17','0','0','indexRtpicAd3','首页右侧图片广告-240*200','0','1298000077','1300592077','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=indexrtpicad3&charset=gbk"></script>',''),
+('18','0','0','searchTopBanner','搜索页面顶部banner广告-300*40','0','1298012954','1300604954','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=searchtopbanner&charset=gbk"></script>',''),
+('19','0','0','contentTopBanner1','内容顶部导航大图-500*60','0','1298017655','1300609655','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner1&charset=gbk"></script>',''),
+('20','0','0','contentTopBanner2','内容顶部导航小图-200*60','0','1298017688','1300609688','<script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner2&charset=gbk"></script>','');

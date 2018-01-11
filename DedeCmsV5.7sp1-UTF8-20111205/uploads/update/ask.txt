@@ -1,0 +1,15 @@
+alter table `#@__ask` CHANGE `title`  `title` varchar(80)  NOT NULL    COMMENT ''  AFTER `anonymous`;
+
+DROP TABLE IF EXISTS `#@__ask_scores`;
+CREATE TABLE `#@__ask_scores` (
+  `mid` int(11) NOT NULL,
+  `userid` char(20) NOT NULL,
+  `ascores` mediumint(8) unsigned NOT NULL default '0',
+  `mscores` mediumint(8) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`mid`)
+)ENGINE=MyISAM;
+
+alter table `#@__asktype` ADD `askwarrnum` mediumint(8) unsigned  NOT NULL    default '0'  COMMENT ''  AFTER `asknum`;
+alter table `#@__ask` drop column `extra`;
+alter table `#@__askanswer` drop column `brief`;
+ALTER TABLE `#@__ask_scores` ADD PRIMARY KEY ( `mid` );

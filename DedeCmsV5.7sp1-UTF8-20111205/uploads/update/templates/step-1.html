@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>升级程序 - 织梦内容管理系统<?php echo $verMsg; ?></title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="top">
+	<div class="top-logo">
+	</div>
+	<div class="top-link">
+		<ul>
+			<li><a href="http://www.DedeCMS.com" target="_blank">官方网站</a></li>
+			<li><a href="http://bbs.DedeCMS.com" target="_blank">技术论坛</a></li>
+			<li><a href="http://help.DedeCMS.com" target="_blank">帮助</a></li>
+		</ul>
+	</div>
+	<div class="top-version">
+		<!-- 版本信息 -->
+		<h2>DedeCMS<?php echo $verMsg; ?></h2>
+	</div>
+</div>
+
+<div class="main">
+	<div class="pleft">
+		<dl class="setpbox t1">
+			<dt>升级步骤</dt>
+			<dd>
+				<ul>
+					<li class="now">升级必读</li>
+                    <li>环境检测</li>
+                    <li>正在升级</li>
+                    <li>升级完成</li>
+				</ul>
+			</dd>
+		</dl>
+	</div>
+	<div class="pright">
+		<div class="pr-title"><h3>升级必读</h3></div>
+		<div class="pr-agreement">
+			<strong>一、备份</strong>
+				<P>1.在使用升级程序之前,确保您已经对系统进行了备份.</p>
+				<p>2.建议在操作之前本地进行测试升级,在没有任何问题后再进行上传</p>
+			<strong>二、确保程序的完整性 </strong>
+				<p>在您修改了程序或数据库结构以后我们不能保证升级能够完全成功。 </p>
+			<strong>三、升级失败怎么办? </strong>
+				<p>升级失败或者有任何的语句没有执行，本程序都会在update目录下面生成<font color='red'>uplog.txt</font>和<font color='red'>uperr.txt</font>两个文件，这个两个文件分别记录着程序执行的日志和没有执行的sql语句。</p>
+				<p>如果升级的时候报错了,你可以把uplog.txt的内容发到官方论坛  转换整合版块<a href="http://bbs.dedecms.com/t38" target="_blank">bbs.dedecms.com</a>寻求帮助，或者你可以使用后台的sql命令工具来执行以下errsql.txt的内容。</P>
+			<strong>四、如果您真的不知道怎么升级 </strong>
+			四,您实在不想自己升级
+				<p>可以寻求织梦官方团队协助,当然您需要先购买产品授权<a href="http://www.desdev.cn" target="_blank">www.desdev.cn</a>成为我们的授权用户,然后还得购买我们的程序升级服务<a href="http://www.desdev.cn" target="_blank">www.desdev.cn</a>,我们会有专业的技术人员帮您进行升级.</p>
+				<p><b>升级程序更新时间：</b> 2011年3月10日 By DedeCMS.com</p>
+		</div>
+		<div class="btn-box">
+			<input name="readpact" type="checkbox" id="readpact" value="" /><label for="readpact"><strong class="fc-690 fs-14">我已经阅读</strong></label>
+			<input type="button" class="btn-next" value="继续" onclick="document.getElementById('readpact').checked ?window.location.href='index.php?step=2' : alert('阅读完了才能升级！');" />
+		</div>
+	</div>
+</div>
+
+<div class="foot">
+
+</div>
+
+</body>
+</html>

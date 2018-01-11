@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>升级程序 - 织梦内容管理系统<?php echo $verMsg; ?></title>
+<script src="../include/dedeajax2.js" language="javascript" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+<!--
+    function $o(tid){
+        return document.getElementById(tid);
+    }
+   
+	function DoInstall()
+    {
+        if($o('isBackUp').checked == false){
+			alert('不备份数据库？');
+		}else{
+			document.form1.submit();
+		}
+    }
+-->
+</script>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id='postloader' class='waitpage'></div>
+<form action="index.php" method="post" name="form1">
+<input type="hidden" name="step" value="3" />
+<div class="top">
+    <div class="top-logo">
+        
+    </div>
+    <div class="top-link">
+        <ul>
+            <li><a href="http://www.dedecms.com" target="_blank">官方网站</a></li>
+            <li><a href="http://bbs.dedecms.com" target="_blank">技术论坛</a></li>
+            <li><a href="http://help.dedecms.com" target="_blank">帮助</a></li>
+        </ul>
+    </div>
+    <div class="top-version">
+        <!-- 版本信息 -->
+        <h2>DEDECMS<?php echo $verMsg; ?></h2>
+    </div>
+</div>
+
+<div class="main">
+    <div class="pleft">
+        <dl class="setpbox t1">
+            <dt>升级步骤</dt>
+            <dd>
+                <ul>
+                    <li class="succeed">升级必读</li>
+                    <li class="now">环境检测</li>
+                    <li>正在升级</li>
+                    <li>升级完成</li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+    <div class="pright">
+        <div class="pr-title"><h3>模块检测</h3></div>
+        <table width="726" border="0" align="center" cellpadding="0" cellspacing="0" class="twbox">
+            <tr>
+                <td style='line-height:180%'>
+                    <b>检测到已经安装的模块：<font color='red'>（不保证低版本的模块在v5.7程序中能够运行）</font></b><br />
+                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php CheckModelStatus('0a7bea5dbe571d35def883cbec796437' )?> value='0a7bea5dbe571d35def883cbec796437' /> 留言簿模块</div>
+                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php CheckModelStatus('59155be87ea60c5c65ec1f7a46a0fc9d' )?> value='59155be87ea60c5c65ec1f7a46a0fc9d' /> 手机WAP浏览</div>
+                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php CheckModelStatus('7badb72a3ff79af2a7112beee60cb970' )?> value='7badb72a3ff79af2a7112beee60cb970' /> 小说模块</div>
+                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php CheckModelStatus('867af26e9c1ccf22a1cf67e756cf5acc' )?> value='867af26e9c1ccf22a1cf67e756cf5acc' /> 黄页模块</div>
+                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php CheckModelStatus('8964eda9013d1df0afea08ed63243436' )?> value='8964eda9013d1df0afea08ed63243436' /> 站内新闻</div>
+                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php CheckModelStatus('be722dbfa3cb3cb5628aab2d767ff62e' )?> value='be722dbfa3cb3cb5628aab2d767ff62e' /> 问答模块</div>
+                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php CheckModelStatus('dfcb5cd4d7bc0e3f7eb655e62dd6bc64' )?> value='dfcb5cd4d7bc0e3f7eb655e62dd6bc64' /> 圈子模块</div>
+                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php CheckModelStatus('c10bb6ac52082ab3e669b4814b44a6f1' )?> value='c10bb6ac52082ab3e669b4814b44a6f1' /> 邮件订阅</div>
+                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php CheckModelStatus('8a4773468b800900dcfefbc5988833ed' )?> value='8a4773468b800900dcfefbc5988833ed' /> UCenter模块</div>
+                </td>
+            </tr>
+			<tr>
+				<td><input type='checkbox' id='isModulesUpdate' name='isModulesUpdate' value='1' checked='true'><b>是否升级选中的模块？</b></td>
+			</tr>
+        </table>
+		<div class="pr-title"><h3>数据库检测</h3></div>
+		<table width="726" border="0" align="center" cellpadding="0" cellspacing="0" class="twbox">
+            <tr>
+                <td style='line-height:180%'>
+                    <b>数据库链接情况：</b><?php echo $dsql->linkID?'<font color="green">已连接</font>':'<font color="red">未连接</font>'?>
+                </td>
+            </tr>
+			<tr>
+				<td><input type='checkbox' id='isBackUp' name='isBackUp' value='1'><b>已经备份了数据库？</b></td>
+			</tr>
+        </table>
+        <div class="btn-box">
+    <input type="button" class="btn-back" value="后退" onclick="window.location.href='index.php?step=1';" />
+            <input type="button" class="btn-next" value="开始升级" onclick="DoInstall();" />
+      </div>
+    </div>
+</div>
+<div class="foot">
+</div>
+</form>
+</body>
+</html>
